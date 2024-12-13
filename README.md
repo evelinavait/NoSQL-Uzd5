@@ -2,7 +2,7 @@
 
 Duomenų bazės modeliavimas. **Variantas #6: Kelionių registracijos sistema**
 
-Šioje užduotyje atliekamas duomenų bazės modeliavimas, sukuriamas web servisas, leidžiantis navigacijos įrenginiams registruoti keliones.
+Šioje užduotyje atliekamas duomenų bazės modeliavimas, pagal sudarytą API aprašą sukuriamas web servisas, leidžiantis navigacijos įrenginiams registruoti keliones.
 
 Sistemoje registruojasi klientas:
 - Vardas  
