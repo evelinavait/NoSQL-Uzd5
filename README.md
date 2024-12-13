@@ -5,7 +5,7 @@ Duomenų bazės modeliavimas.
 Šioje užduotyje atliekamas duomenų bazės modeliavimas, sukuriamas web servisas, leidžiantis navigacijos įrenginiams registruoti keliones.
 
 Sistemoje registruojasi klientas:
-Vardas //
+Vardas /
 Pavardė
 El. pašto adresas
 Gimimo data
