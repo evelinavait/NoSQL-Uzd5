@@ -5,17 +5,17 @@ Duomenų bazės modeliavimas.
 Šioje užduotyje atliekamas duomenų bazės modeliavimas, sukuriamas web servisas, leidžiantis navigacijos įrenginiams registruoti keliones.
 
 Sistemoje registruojasi klientas:
-Vardas /
-Pavardė
-El. pašto adresas
-Gimimo data
+- Vardas  
+- Pavardė  
+- El. pašto adresas  
+- Gimimo data  
 
 Klientai registruoja tranporto priemones:
-Modelis
-Gamintojas
-Valstybinis numeris
-VIN numeris
-Pagaminimo metai
+- Modelis
+- Gamintojas
+- Valstybinis numeris
+- VIN numeris
+- Pagaminimo metai
 
 Kliento įrenginys pradėjus kelionę nurodytų automobiliu užregistruoja naują kelionę. Tokiai kelionei kas įrenginyje pasirinktą intervalą (ne mažesnį kaip 5 sekundės) registruoja transporto priemonės koordinates. Baigus kelionę, kelionė pažymima kaip baigta, daugiau pozicijų kelionei nėra registruojama.
 
