@@ -10,7 +10,7 @@ Sistemoje registruojasi klientas:
 - El. pašto adresas  
 - Gimimo data  
 
-Klientai registruoja tranporto priemones:
+Klientai registruoja transporto priemones:
 - Modelis
 - Gamintojas
 - Valstybinis numeris
