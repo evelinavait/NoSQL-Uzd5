@@ -1,7 +1,6 @@
 # NoSQL-Uzd5
 
-Duomenų bazės modeliavimas.\
-**Variantas #6: Kelionių registracijos sistema**
+Duomenų bazės modeliavimas. **Variantas #6: Kelionių registracijos sistema**
 
 Šioje užduotyje atliekamas duomenų bazės modeliavimas, sukuriamas web servisas, leidžiantis navigacijos įrenginiams registruoti keliones.
 
