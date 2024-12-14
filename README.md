@@ -22,3 +22,10 @@ Kliento įrenginys pradėjus kelionę nurodytų automobiliu užregistruoja nauj�
 Klientai gali peržiūrėti savo keliones. Gauti kelionės trukmę laiku. Gauti kelionės atstumą (kelionės atstumas yra visų atkarpų tarp dviejų iš eilės einančių taškų suma).
 
 Klientai taip pat gali gauti bendrą konkretaus automobilio kelionių trukmę ir atstumą.
+
+## Routes and Resources
+### Clients Resource
+|URL|HTTP verb|Result|
+|---|---|---|
+/clients|PUT|create a new client|
+/clients/{clientId}|GET|get client details|
