@@ -25,7 +25,7 @@ Klientai taip pat gali gauti bendrą konkretaus automobilio kelionių trukmę ir
 
 ## Duomenų bazės struktūros diagrama
 <p align="center">
-  <img alt="Image of ERD" src="https://github.com/evelinavait/NoSQL-Uzd5/master/images/ER-diagram.pdf" />
+  <img alt="Image of ERD" src="https://github.com/evelinavait/NoSQL-Uzd5/blob/master/images/ER-diagram.pdf" />
 </p>
 
 ## Routes and Resources
