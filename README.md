@@ -24,9 +24,9 @@ Klientai gali peržiūrėti savo keliones. Gauti kelionės trukmę laiku. Gauti 
 Klientai taip pat gali gauti bendrą konkretaus automobilio kelionių trukmę ir atstumą.
 
 ## Duomenų bazės struktūros diagrama
-<p align="center">
-  <img alt="Image of ERD" src="https://github.com/evelinavait/NoSQL-Uzd5/blob/master/images/ER-diagram.pdf" />
-</p>
+[View ER Diagram (PDF)](https://raw.githubusercontent.com/evelinavait/NoSQL-Uzd5/master/images/ER-diagram.pdf)
+
+
 
 ## Routes and Resources
 ### Clients Resource
