@@ -29,8 +29,33 @@ Klientai taip pat gali gauti bendrą konkretaus automobilio kelionių trukmę ir
 </p>
 
 ## Routes and Resources
-### Clients Resource
-|URL|HTTP verb|Result|
+### Klientai Resource
+|URL|HTTP metodas|Resultatas|
 |---|---|---|
-/clients|PUT|create a new client|
-/clients/{clientId}|GET|get client details|
+/clients|PUT|Užregistruoti klientą sistemoje|
+/clients/{clientId}|GET|Gauti kliento duomenis|
+
+### Transporto priemonės Resource
+|URL|HTTP metodas|Resultatas|
+|---|---|---|
+/vehicles|PUT|Registruoti naują priemonę|
+/clients/{client_id}/vehicles|GET|Gauti kliento transporto priemones|
+/vehicles/{vehicle_id}/statistics|GET|Gauti bendrą kelionių statistiką|
+
+### Kelionės Resource
+|URL|HTTP metodas|Resultatas|
+|---|---|---|
+/journeys|PUT|Pradėti naują kelionę|
+/journeys/{journey_id}/coordinates|POST|Registruoti transporto priemonės koordinates|
+/journeys/{journey_id}|GET|Gauti kelionės informaciją|
+/journeys/{journey_id}/end|PUT|Baigti kelionę|
+
+### Duomenų bazės valymas
+|URL|HTTP metodas|Resultatas|
+|---|---|---|
+/cleanup|POST|Išvalyti duomenų bazę|
+
+
+
+
+
