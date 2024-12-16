@@ -139,6 +139,9 @@ paths:
             schema:
               type: object
               properties:
+                client_id:
+                  type: integer
+                  description: Kliento identifikacinis numeris
                 model:
                   type: string
                   description: Transporto priemonės modelis
@@ -156,12 +159,14 @@ paths:
                   format: int32
                   description: Pagaminimo metai
               required:
+                - client_id
                 - model
                 - manufacturer
                 - license_plate
                 - vin
                 - year
             example:
+              client_id: "6760508d919ae57e4ed69f0f" 
               model: "Model S"
               manufacturer: "Tesla"
               license_plate: "ABC123"
