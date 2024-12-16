@@ -1,16 +1,16 @@
 openapi: 3.0.0
 info:
-  title: Navigation Device Travel Registration System
+  title: Kelionių registracijos sistema
   version: "1.0"
   description: |
-    A system that allows navigation devices to register trips. Clients can register by providing personal details and their vehicles.
+    Servisas leidžia navigacijos įrenginiams registruoti keliones.
 
 paths:
   /clients:
     put:
-      summary: Register a new client
+      summary: Užregistruoti klientą sistemoje
       description: |
-        Allows a client to register in the system by providing their name, surname, email, and date of birth.
+        Leidžia klientui užsiregistruoti sistemoje nurodant savo vardą, pavardę, el. pašto adresą ir gimimo datą.
       requestBody:
         required: true
         content:
@@ -18,33 +18,33 @@ paths:
             schema:
               type: object
               properties:
-                firstName:
+                first_name:
                   type: string
-                  description: Client's first name
-                lastName:
+                  description: Kliento vardas
+                last_name:
                   type: string
-                  description: Client's last name
+                  description: Kliento pavardė
                 email:
                   type: string
                   format: email
-                  description: Client's email address
-                birthDate:
+                  description: Kliento el. pašto adresas
+                birth_date:
                   type: string
                   format: date
-                  description: Client's date of birth in YYYY-MM-DD format
+                  description: Kliento gimimo data YYYY-MM-DD formatu
               required:
-                - firstName
-                - lastName
+                - first_name
+                - last_name
                 - email
-                - birthDate
+                - birth_date
             example:
-              firstName: "Jonas"
-              lastName: "Kazlauskas"
+              first_name: "Jonas"
+              last_name: "Kazlauskas"
               email: "jonas.kazlauskas@example.com"
-              birthDate: "1990-05-12"
+              birth_date: "1990-05-12"
       responses:
         "201":
-          description: Client registered successfully
+          description: Klientas užregistruotas sėkmingai
           content:
             application/json:
               schema:
@@ -53,9 +53,9 @@ paths:
                   message:
                     type: string
                 example:
-                  message: "Client registered successfully"
+                  message: "Klientas užregistruotas sėkmingai"
         "400":
-          description: Invalid input. Required fields may be missing or incorrectly formatted
+          description: Netinkama įvestis. Trūksta privalomų laukų arba jie neteisingai suformatuoti.
           content:
             application/json:
               schema:
@@ -64,23 +64,23 @@ paths:
                   error:
                     type: string
                 example:
-                  error: "Invalid input. Ensure all required fields are provided."
+                  error: "Netinkama įvestis. Įsitikinkite, kad pateikti visi privalomi laukai."
 
   /clients/{clientId}:
     get:
-      summary: Get client details
+      summary: Gauti kliento duomenis
       description: |
-        Retrieves the details of a specific client by their unique identifier (clientId).
+        Leidžia gauti informaciją apie konkretų klientą pagal jo unikalų identifikatorių (client_id).
       parameters:
         - name: clientId
           in: path
           required: true
-          description: The unique identifier of the client
+          description: Unikalus kliento identifikatorius
           schema:
             type: string
       responses:
         "200":
-          description: Client details retrieved successfully
+          description: Kliento duomenys gauti sėkmingai
           content:
             application/json:
               schema:
@@ -88,24 +88,24 @@ paths:
                 properties:
                   id:
                     type: integer
-                  firstName:
+                  first_name:
                     type: string
-                  lastName:
+                  last_name:
                     type: string
                   email:
                     type: string
                     format: email
-                  birthDate:
+                  birth_date:
                     type: string
                     format: date
                 example:
                   id: 123
-                  firstName: "Jonas"
-                  lastName: "Kazlauskas"
+                  first_name: "Jonas"
+                  last_name: "Kazlauskas"
                   email: "jonas.kazlauskas@example.com"
-                  birthDate: "1990-05-12"
+                  birth_date: "1990-05-12"
         "404":
-          description: Client not found
+          description: Klientas nerastas
           content:
             application/json:
               schema:
@@ -114,9 +114,9 @@ paths:
                   error:
                     type: string
                 example:
-                  error: "Client not found"
+                  error: "Klientas nerastas"
         "400":
-          description: Invalid client identifier format
+          description: Netinkamas kliento identifikatoriaus (clientId) formatas
           content:
             application/json:
               schema:
@@ -125,13 +125,13 @@ paths:
                   error:
                     type: string
                 example:
-                  error: "Invalid client identifier format"
+                  error: "Netinkamas kliento identifikatoriaus (clientId) formatas"
 
   /vehicles:
     put:
-      summary: Register a new vehicle
+      summary: Registruoti naują priemonę
       description: |
-        Allows clients to register their vehicles by providing details such as model, manufacturer, license plate, VIN, and year of manufacture.
+          Klientai gali užregistruoti savo transporto priemones, pateikdami tokią informaciją kaip modelis, gamintojas, valstybinis numeris, VIN ir pagaminimo metai.
       requestBody:
         required: true
         content:
@@ -141,35 +141,35 @@ paths:
               properties:
                 model:
                   type: string
-                  description: Vehicle's model
+                  description: Transporto priemonės modelis
                 manufacturer:
                   type: string
-                  description: Vehicle's manufacturer
-                licensePlate:
+                  description: Transporto priemonės gamintojas
+                license_plate:
                   type: string
-                  description: Vehicle's license plate number
+                  description: Transporto priemonės valstybinis numeris
                 vin:
                   type: string
-                  description: Vehicle Identification Number (VIN)
+                  description: Transporto priemonės identifikacinis numeris (VIN)
                 year:
                   type: integer
                   format: int32
-                  description: Year the vehicle was manufactured
+                  description: Pagaminimo metai
               required:
                 - model
                 - manufacturer
-                - licensePlate
+                - license_plate
                 - vin
                 - year
             example:
               model: "Model S"
               manufacturer: "Tesla"
-              licensePlate: "ABC123"
+              license_plate: "ABC123"
               vin: "5YJSA1E26MF123456"
               year: 2020
       responses:
         "201":
-          description: Vehicle registered successfully
+          description: Transporto priemonė užregistruota sėkmingai
           content:
             application/json:
               schema:
@@ -178,9 +178,9 @@ paths:
                   message:
                     type: string
                 example:
-                  message: "Vehicle registered successfully"
+                  message: "Transporto priemonė užregistruota sėkmingai"
         "400":
-          description: Invalid input. Required fields may be missing or incorrectly formatted
+          description: Netinkama įvestis. Trūksta privalomų laukų arba jie neteisingai suformatuoti.
           content:
             application/json:
               schema:
@@ -189,13 +189,69 @@ paths:
                   error:
                     type: string
                 example:
-                  error: "Invalid input. Ensure all required fields are provided."
+                  error: "Netinkama įvestis. Įsitikinkite, kad pateikti visi privalomi laukai."
+
+  /clients/{client_id}/vehicles:
+    get:
+      summary: Gauti kliento transporto priemones
+      description: |
+        Klientai gali gauti visų jų registruotų transporto priemonių informaciją pagal unikalų kliento ID.
+      parameters:
+        - name: client_id
+          in: path
+          required: true
+          description: Unikalus kliento identifikatorius
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Sėkmingai gauta kliento transporto priemonių informacija
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    model:
+                      type: string
+                      description: Transporto priemonės modelis
+                    manufacturer:
+                      type: string
+                      description: Transporto priemonės gamintojas
+                    license_plate:
+                      type: string
+                      description: Transporto priemonės valstybinis numeris
+                    vin:
+                      type: string
+                      description: Transporto priemonės identifikacinis numeris (VIN)
+                    year:
+                      type: integer
+                      format: int32
+                      description: Pagaminimo metai
+              example:
+                model: "Model S"
+                manufacturer: "Tesla"
+                license_plate: "ABC123"
+                vin: "5YJSA1E26MF123456"
+                year: 2020
+        "404":
+          description: Klientas arba transporto priemonės nerastos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                example:
+                  error: "Klientas su nurodytu ID arba jo transporto priemonės nerastos."
 
   /journeys:
-    post:
-      summary: Start a new journey
+    put:
+      summary: Pradėti naują kelionę
       description: |
-        Starts a new journey for a specified vehicle. The device will periodically log vehicle coordinates during the journey.
+        Klientai gali pradėti naują kelionę, pateikdami transporto priemonės ID ir intervalą koordinatėms registruoti.
       requestBody:
         required: true
         content:
@@ -203,45 +259,75 @@ paths:
             schema:
               type: object
               properties:
-                vehicleId:
+                vehicle_id:
                   type: string
-                  description: The identifier of the vehicle starting the journey
-                intervalInSeconds:
+                  description: Transporto priemonės unikalus identifikatorius
+                interval:
                   type: integer
-                  minimum: 5
-                  description: Interval (in seconds) between logging vehicle coordinates (must be at least 5 seconds)
+                  description: Intervalas (sekundėmis) koordinatėms registruoti. Mažiausiai 5 sekundės.
               required:
-                - vehicleId
-                - intervalInSeconds
+                - vehicle_id
+                - interval
             example:
-              vehicleId: "vehicle-123"
-              intervalInSeconds: 10
+              vehicle_id: "64c8e9f23f1a2c3d456b789a"
+              interval: 10
       responses:
         "201":
-          description: Journey started successfully
+          description: Kelionė sėkmingai pradėta
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  journeyId:
+                  message:
                     type: string
-                    description: The identifier of the started journey
-                example:
-                  journeyId: "journey-456"
+                  id:
+                    type: string
+                    description: Pradėtos kelionės unikalus identifikatorius
+              example:
+                message: "Kelionė pradėta!"
+                id: "64c8e9f23f1a2c3d456b789b"
         "400":
-          description: Invalid input data
+          description: Netinkama įvestis. Trūksta laukelių arba jie neteisingai suformatuoti.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                missing_fields:
+                  value:
+                    error: "Trūksta laukelių: vehicle_id arba interval"
+                invalid_interval:
+                  value:
+                    error: "Intervalas turi būti ne mažesnis kaip 5 sekundės!"
+                invalid_vehicle_id:
+                  value:
+                    error: "Neteisingas vehicle_id formatas!"
+        "404":
+          description: Transporto priemonė nerasta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Transporto priemonė nerasta!"
 
-  /journeys/{journeyId}/coordinates:
+  /journeys/{journey_id}/coordinates:
     post:
-      summary: Log coordinates for an ongoing journey
+      summary: Registruoti transporto priemonės koordinates
       description: |
-        Logs the current coordinates of the vehicle for the specified journey. This endpoint is called at the interval specified during journey creation.
+        Klientai gali registruoti kelionės metu surinktas transporto priemonės koordinates, įskaitant platumą, ilgumą ir laiką.
       parameters:
-        - name: journeyId
+        - name: journey_id
           in: path
           required: true
-          description: The unique identifier of the journey
+          description: Kelionės unikalus identifikatorius
           schema:
             type: string
       requestBody:
@@ -254,15 +340,15 @@ paths:
                 latitude:
                   type: number
                   format: float
-                  description: Current latitude of the vehicle
+                  description: Koordinačių platuma
                 longitude:
                   type: number
                   format: float
-                  description: Current longitude of the vehicle
+                  description: Koordinačių ilguma
                 timestamp:
                   type: string
                   format: date-time
-                  description: Timestamp of the logged position
+                  description: Laikas, kada buvo surinktos koordinatės
               required:
                 - latitude
                 - longitude
@@ -270,188 +356,44 @@ paths:
             example:
               latitude: 54.6872
               longitude: 25.2797
-              timestamp: "2024-12-13T12:34:56Z"
+              timestamp: "2024-12-16T14:30:00"
       responses:
         "200":
-          description: Coordinates logged successfully
-        "404":
-          description: Journey not found
+          description: Koordinatės sėkmingai įkeltos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      journey_id:
+                        type: string
+                        description: Kelionės unikalus identifikatorius
+                      timestamp:
+                        type: string
+                        format: date-time
+                        description: Laikas, kada buvo surinktos koordinatės
+                      latitude:
+                        type: number
+                        format: float
+                        description: Koordinačių platuma
+                      longitude:
+                        type: number
+                        format: float
+                        description: Koordinačių ilguma
+              example:
+                message: "Koordinatės sėkmingai įkeltos!"
+                data:
+                  journey_id: "64c8e9f23f1a2c3d456b789b"
+                  timestamp: "2024-12-16T14:30:00"
+                  latitude: 54.6872
+                  longitude: 25.2797
         "400":
-          description: Invalid input data
-
-  /journeys/{journeyId}/complete:
-    post:
-      summary: Mark a journey as completed
-      description: |
-        Marks the specified journey as completed. Once completed, no further positions can be logged for the journey.
-      parameters:
-        - name: journeyId
-          in: path
-          required: true
-          description: The unique identifier of the journey
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Journey marked as completed
-        "404":
-          description: Journey not found
-
-  /journeys/{journeyId}:
-    get:
-      summary: View journey details
-      description: |
-        Retrieves the details of a specific journey, including all logged positions and timestamps.
-      parameters:
-        - name: journeyId
-          in: path
-          required: true
-          description: The unique identifier of the journey
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Journey details retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  journeyId:
-                    type: string
-                  vehicleId:
-                    type: string
-                  positions:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        latitude:
-                          type: number
-                          format: float
-                        longitude:
-                          type: number
-                          format: float
-                        timestamp:
-                          type: string
-                          format: date-time
-                  startedAt:
-                    type: string
-                    format: date-time
-                  completedAt:
-                    type: string
-                    format: date-time
-                example:
-                  journeyId: "journey-456"
-                  vehicleId: "vehicle-123"
-                  positions:
-                    - latitude: 54.6872
-                      longitude: 25.2797
-                      timestamp: "2024-12-13T12:34:56Z"
-                    - latitude: 54.6891
-                      longitude: 25.2819
-                      timestamp: "2024-12-13T12:35:01Z"
-                  startedAt: "2024-12-13T12:34:00Z"
-                  completedAt: "2024-12-13T13:00:00Z"
-        "404":
-          description: Journey not found
-
-  /journeys/{journeyId}/duration:
-    get:
-      summary: Get journey duration
-      description: |
-        Calculates and returns the total duration of the journey in seconds.
-      parameters:
-        - name: journeyId
-          in: path
-          required: true
-          description: The unique identifier of the journey
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Journey duration retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  journeyId:
-                    type: string
-                  durationInSeconds:
-                    type: integer
-                example:
-                  journeyId: "journey-456"
-                  durationInSeconds: 1560
-        "404":
-          description: Journey not found
-
-  /journeys/{journeyId}/distance:
-    get:
-      summary: Get journey distance
-      description: |
-        Calculates the total distance of the journey by summing all segments between consecutive points.
-      parameters:
-        - name: journeyId
-          in: path
-          required: true
-          description: The unique identifier of the journey
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Journey distance retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  journeyId:
-                    type: string
-                  distanceInMeters:
-                    type: number
-                    format: float
-                example:
-                  journeyId: "journey-456"
-                  distanceInMeters: 12000.5
-        "404":
-          description: Journey not found
-
-  /vehicles/{vehicleId}/summary:
-    get:
-      summary: Get total journey duration and distance for a vehicle
-      description: |
-        Retrieves the total duration and distance of all journeys taken by a specific vehicle.
-      parameters:
-        - name: vehicleId
-          in: path
-          required: true
-          description: The unique identifier of the vehicle
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Total journey duration and distance retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  vehicleId:
-                    type: string
-                  totalDurationInSeconds:
-                    type: integer
-                    description: Total duration of all journeys for the vehicle
-                  totalDistanceInMeters:
-                    type: number
-                    format: float
-                    description: Total distance of all journeys for the vehicle
-                example:
-                  vehicleId: "vehicle-123"
-                  totalDurationInSeconds: 36000
-                  totalDistanceInMeters: 150000.5
-        "404":
-          description: Vehicle not found or no journeys exist for the vehicle
+          description: Netinkama įvestis. Trūksta laukelių arba jie neteisingai suformatuoti.
           content:
             application/json:
               schema:
@@ -459,8 +401,180 @@ paths:
                 properties:
                   error:
                     type: string
+              examples:
+                missing_fields:
+                  value:
+                    error: "Trūksta laukelio: latitude"
+                invalid_journey_id:
+                  value:
+                    error: "Neteisingas journey_id formatas!"
+        "404":
+          description: Kelionė nerasta arba jau baigta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Kelionė nerasta arba jau baigta!"
+
+  /journeys/{journey_id}:
+    get:
+      summary: Gauti kelionės informaciją
+      description: |
+        Gauti kelionės informaciją, įskaitant bendrą atstumą, taškų sąrašą, trukmę ir kitas detales.
+      parameters:
+        - name: journey_id
+          in: path
+          required: true
+          description: Kelionės unikalus identifikatorius
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Kelionės informacija sėkmingai gauta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  journey_id:
+                    type: string
+                    description: Kelionės unikalus identifikatorius
+                  vehicle_id:
+                    type: string
+                    description: Transporto priemonės unikalus identifikatorius
+                  start_time:
+                    type: string
+                    format: date-time
+                    description: Kelionės pradžios laikas
+                  end_time:
+                    type: string
+                    format: date-time
+                    description: Kelionės pabaigos laikas
+                  total_distance:
+                    type: number
+                    format: float
+                    description: Bendras nuvažiotas atstumas (skaičiuotas naudojant koordinates)
+                  total_duration:
+                    type: number
+                    format: float
+                    description: Bendra kelionės trukmė (minutėmis)
+              example:
+                journey_id: "64c8e9f23f1a2c3d456b789b"
+                vehicle_id: "64c8e9f23f1a2c3d456b789a"
+                start_time: "2024-12-16T12:00:00"
+                end_time: "2024-12-16T12:30:00"
+                total_distance: 15.7
+                total_duration: 30
+        "400":
+          description: Netinkamas įvesties formatas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Neteisingas journey_id formatas!"
+        "404":
+          description: Kelionė nerasta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Kelionė nerasta!"
+
+  /vehicles/{vehicle_id}/statistics:
+    get:
+      summary: Gauti bendrą kelionių statistiką
+      description: |
+        Gauti bendrą konkrečios transporto priemonės kelionių statistiką, įskaitant bendrą nuvažiuotą atstumą ir bendrą kelionių trukmę.
+      parameters:
+        - name: vehicle_id
+          in: path
+          required: true
+          description: Transporto priemonės unikalus identifikatorius
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Transporto priemonės statistika sėkmingai gauta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicle_id:
+                    type: string
+                    description: Transporto priemonės unikalus identifikatorius
+                  total_distance_km:
+                    type: number
+                    format: float
+                    description: Bendras nuvažiotas atstumas kilometrais
+                  total_duration_minutes:
+                    type: number
+                    format: float
+                    description: Bendra kelionių trukmė minutėmis
+              example:
+                vehicle_id: "64c8e9f23f1a2c3d456b789a"
+                total_distance_km: 123.45
+                total_duration_minutes: 678.9
+        "400":
+          description: Netinkamas įvesties formatas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Neteisingas vehicle_id formatas!"
+        "404":
+          description: Statistika nerasta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Statistika nerasta arba transporto priemonė neturi kelionių!"
+
+  /journeys/{journey_id}/end:
+    put:
+      summary: Baigti kelionę
+      description: |
+        Užbaigia aktyvią kelionę, nustatant kelionės pabaigos laiką ir pažymint, kad kelionė yra baigta.
+      parameters:
+        - name: journey_id
+          in: path
+          required: true
+          description: Kelionės unikalus identifikatorius
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Kelionė sėkmingai baigta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                 example:
-                  error: "Vehicle not found or no journeys exist for this vehicle"
+                  message: "Kelionė sėkmingai baigta!"
+
   /cleanup:
     post:
       summary: Clear the database
@@ -469,4 +583,3 @@ paths:
       responses:
         "200":
           description: Cleanup completed.
-
