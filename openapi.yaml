@@ -420,6 +420,31 @@ paths:
               example:
                 error: "Kelionė nerasta arba jau baigta!"
 
+  /journeys/{journey_id}/end:
+    put:
+      summary: Baigti kelionę
+      description: |
+        Užbaigia aktyvią kelionę, nustatant kelionės pabaigos laiką ir pažymint, kad kelionė yra baigta.
+      parameters:
+        - name: journey_id
+          in: path
+          required: true
+          description: Kelionės unikalus identifikatorius
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Kelionė sėkmingai baigta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: "Kelionė sėkmingai baigta!"
+
   /journeys/{journey_id}:
     get:
       summary: Gauti kelionės informaciją
@@ -549,31 +574,6 @@ paths:
                     type: string
               example:
                 error: "Statistika nerasta arba transporto priemonė neturi kelionių!"
-
-  /journeys/{journey_id}/end:
-    put:
-      summary: Baigti kelionę
-      description: |
-        Užbaigia aktyvią kelionę, nustatant kelionės pabaigos laiką ir pažymint, kad kelionė yra baigta.
-      parameters:
-        - name: journey_id
-          in: path
-          required: true
-          description: Kelionės unikalus identifikatorius
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Kelionė sėkmingai baigta
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                example:
-                  message: "Kelionė sėkmingai baigta!"
 
   /cleanup:
     post:
