@@ -577,9 +577,9 @@ paths:
 
   /cleanup:
     post:
-      summary: Clear the database
+      summary: Išvalyti duomenų bazę
       description: |
-        This endpoint is used to prepare the database for tests. It deletes all data in the database.
+        Ištrina visus duomenis iš duomenų bazės.
       responses:
         "200":
-          description: Cleanup completed.
+          description: Duomenų bazė išvalyta.
