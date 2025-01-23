@@ -55,6 +55,9 @@ Klientai taip pat gali gauti bendrą konkretaus automobilio kelionių trukmę ir
 |---|---|---|
 /cleanup|POST|Išvalyti duomenų bazę|
 
+---
+`redocly build-docs openapi.yaml --output docs/index.html`
+
 
 
 
